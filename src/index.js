@@ -1,12 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { GlobalStyles } from './global-styles';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { FirebaseContext } from './context/firebase'
+
+import { seedDatabase } from './seed';
+
+const config = {
+  apiKey: "AIzaSyCNEeIlrzbP-hw9fNuazYebnFxZNLjOYlI",
+  authDomain: "netflix-tylerwoolcott.firebaseapp.com",
+  projectId: "netflix-tylerwoolcott",
+  storageBucket: "netflix-tylerwoolcott.appspot.com",
+  messagingSenderId: "666454166358",
+  appId: "1:666454166358:web:f78d7d60470170179024f7" 
+}
+
+const firebase = window.firebase.initializeApp(config);
+// seedDatabase(firebase)
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <FirebaseContext.Provider value={{ firebase: window.firebase}}>
+      <GlobalStyles />
+      <App />
+      </FirebaseContext.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
