@@ -218,3 +218,4 @@ export const Profile = styled.div`
         flex-direction: column;
     }
 `;
+
